@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="author" content="Codecool"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+  <title>Codecool Shop</title>
+
+  <!--Fontawesome icons    -->
+  <script src="https://kit.fontawesome.com/487fa98eb2.js" crossorigin="anonymous"></script>
+  <!-- Bootstrap components -->
+  <!-- Latest compiled and minified Jquery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+  <!--Latest compiled and minified Popper -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+          integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+          crossorigin="anonymous"></script>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+          integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+          crossorigin="anonymous"></script>
+
+  <!-- Latest compiled and minified CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <!-- End of Bootstrap components -->
+
+  <link th:href="@{/css/main.css}" rel="stylesheet"/>
+</head>
+
+<body>
+
+<div class="jumbotron text-center">
+  <h1>Codecool Shop</h1>
+</div>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="/codecoolshop_war_exploded/">Home</a>
+  </li>
+</ul>
+
+
+
+<section class="container">
+
+
+
+</section>
+
+
+<div class="container">
+  <div th:if="${errorCodes.isEmpty()}">
+    <h3>✔️ Transaction succesfully completed</h3>
+    <h4>Delivery information:</h4>
+    <br>
+    <ul>
+      <li th:each="key: ${detailsMap.keySet()}">
+        <span th:text="${key}"></span>: <span th:text="${detailsMap.get(key)}"></span>
+      </li>
+    </ul>
+  </div>
+  <div th:if="not ${errorCodes.isEmpty()}">
+    <h3>❌ Transaction error</h3>
+    <br>
+    <button onclick="history.back()">< Correct Delivery and Billing Details</button>
+    <br><br>
+    <ul>
+      <li th:each="key: ${errorCodes.keySet()}">
+        <span th:text="${errorCodes.get(key)}"></span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<div th:replace="footer.html :: copy"></div>
+
+</body>
+</html>

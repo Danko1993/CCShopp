@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="copy">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" href="/codecoolshop_war_exploded/">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Category</a>
+            <div class="dropdown-menu" >
+                <div th:each="cat : ${categories}">
+                    <a th:href="${ctxPath} + '/?category='+${cat.getId()}"><p th:text="${cat.getName()}"></a></div>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Suppliers</a>
+            <div class="dropdown-menu" >
+                <div th:each="sup : ${suppliers}">
+                    <a th:href="${ctxPath} + '/supplier/?supplier='+${sup.getId()}"><p th:text="${sup.getName()}"></a></div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a th:if="${session.isEmpty()}" class="nav-link" href="/codecoolshop_war_exploded/login/">Login</a>
+        </li>
+        <li class="nav-item">
+            <a th:if="${session.isEmpty()}" class="nav-link" href="/codecoolshop_war_exploded/register/">Register</a>
+        </li>
+        <li class="nav-text active">
+            <a th:if="${session.containsKey('email')}" class="nav-link" th:text="${session.email}"></a>
+        </li>
+        <li class="nav-item">
+            <a th:unless="${session.isEmpty()}" class="nav-link" th:text="Logout" href="/codecoolshop_war_exploded/logout/"></a>
+        <li class="nav-item">
+            <a class="nav-link" th:href="'/codecoolshop_war_exploded/cart/'"><i class="fa-regular fa-cart-shopping"></i></a>
+        </li>
+
+
+    </ul>
+</div>
+
+</body>
+</html>

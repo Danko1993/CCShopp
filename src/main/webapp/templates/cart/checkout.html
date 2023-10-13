@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="author" content="Codecool"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+  <title>Codecool Shop</title>
+
+  <!--Fontawesome icons    -->
+  <script src="https://kit.fontawesome.com/487fa98eb2.js" crossorigin="anonymous"></script>
+  <!-- Bootstrap components -->
+  <!-- Latest compiled and minified Jquery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+  <!--Latest compiled and minified Popper -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+          integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+          crossorigin="anonymous"></script>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+          integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+          crossorigin="anonymous"></script>
+
+  <!-- Latest compiled and minified CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <!-- End of Bootstrap components -->
+
+  <link th:href="@{/static/css/main.css}" rel="stylesheet" />
+</head>
+
+<body>
+
+<div class="jumbotron text-center">
+  <h1>Codecool Shop</h1>
+</div>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="/codecoolshop_war_exploded/">Home</a>
+  </li>
+</ul>
+
+
+
+<section class="container">
+<div class="container">
+  <h4>Delivery information</h4>
+  <br><br>
+  <form th:action="@{/payment/}" method="post" th:object="${cartService}">
+
+    <div class="row">
+      <div>
+        <h3>Billing address</h3>
+        <label for="fname"><i class="fa fa-user"></i> Name</label>
+        <input type="text" id="fname" name="name" placeholder="Name" required>
+        <label for="email"><i class="fa fa-envelope"></i> Email</label>
+        <input type="text" id="email" name="email" placeholder="examle@examle.com" required>
+        <label for="city"><i class="fa fa-institution"></i> City</label>
+        <input type="text" id="city" name="city" placeholder="City" required>
+        <label for="adr"><i class="fa fa-address-card-o"></i>Adress</label>
+        <input type="text" id="adr" name="address" placeholder="Street" required>
+
+        <div class="row">
+          <div class="col-50">
+            <label for="state">State</label>
+            <input type="text" id="state" name="state" placeholder="State" required>
+          </div>
+          <div class="col-50">
+            <label for="zip">Zip</label>
+            <input type="text" id="zip" name="zip" placeholder="00000" required>
+          </div>
+        </div>
+      </div>
+      <input type="submit" value="Finalise your order"></div>
+  </form>
+</div>
+
+
+<div th:replace="footer.html :: copy"></div>
+</section>
+</body>
+</html>
