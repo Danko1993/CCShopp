@@ -4,7 +4,7 @@ Online Shop with Jakarta EE
 
 ## Table of Contents
 
-Introduction
+- Introduction
 - Features
 - Usage
 - Technologies Used
